@@ -1,0 +1,8 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/ironoak", "destination": "/", "permanent": true },
+    { "source": "/ironoak.html", "destination": "/", "permanent": true }
+  ]
+}

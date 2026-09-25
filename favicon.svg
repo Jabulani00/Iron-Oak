@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" role="img" aria-label="Iron &amp; Oak">
+  <rect width="40" height="40" fill="#F3ECDD"/>
+  <circle cx="20" cy="20" r="18.2" fill="none" stroke="#1B1712" stroke-width="1.5"/>
+  <path d="M11 10 L20 20 L11 30 M13 10 h6 M13 30 h6" stroke="#A9793A" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M29 10 L20 20 L29 30" stroke="#1B1712" stroke-width="2" fill="none" stroke-linecap="round"/>
+</svg>
