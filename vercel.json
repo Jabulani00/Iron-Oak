@@ -1,6 +1,9 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/", "destination": "/ironoak.html" }
+  ],
   "redirects": [
     { "source": "/ironoak", "destination": "/", "permanent": true },
     { "source": "/ironoak.html", "destination": "/", "permanent": true }
