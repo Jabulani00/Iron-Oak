@@ -1,0 +1,3 @@
+deployement ID: AKfycbwZKNAoT0LHDFjvpfdg_OSN2l21ZAA-vWEQOF0rFA1Ip0J4sMMknZPAEJEbzbtZYZHU
+wep app
+url: https://script.google.com/macros/s/AKfycbwZKNAoT0LHDFjvpfdg_OSN2l21ZAA-vWEQOF0rFA1Ip0J4sMMknZPAEJEbzbtZYZHU/exec

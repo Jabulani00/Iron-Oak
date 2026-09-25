@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="What Iron & Oak stores on your device: cookie choice, booking IDs, and the first-visit offer.">
+<title>Cookie policy — Iron & Oak Barber Co.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        ink: '#1B1712',
+        oak: '#3E2A1E',
+        brass: '#A9793A',
+        brasslight: '#C99A5B',
+        cream: '#F3ECDD',
+        burgundy: '#5C2A2A'
+      },
+      fontFamily: {
+        display: ['"Zilla Slab"', 'serif'],
+        body: ['Inter', 'sans-serif']
+      }
+    }
+  }
+}
+</script>
+</head>
+<body class="font-body text-ink">
+<!-- HEADER -->
+<div id="headerWrap" style="padding-top:env(safe-area-inset-top,0px)">
+  <div id="navPill" class="bg-cream/90 backdrop-blur-md border border-oak/15 flex items-center gap-2 px-3 py-2 md:px-3.5 md:py-2 w-full max-w-[880px]">
+    <a href="ironoak.html" class="flex items-center gap-2 pl-2 pr-3">
+      <svg width="30" height="30" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="none" stroke="#1B1712" stroke-width="1.5"/><path d="M11 10 L20 20 L11 30 M13 10 h6 M13 30 h6" stroke="#A9793A" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M29 10 L20 20 L29 30" stroke="#1B1712" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      <span class="font-display font-700 text-base leading-none hidden sm:block">Iron &amp; Oak</span>
+    </a>
+    <div class="w-px h-6 bg-oak/15 hidden md:block"></div>
+    <nav class="hidden md:flex items-center gap-1 font-500 text-sm mx-1">
+      <a href="ironoak.html" class="underline-grow px-3 py-2 rounded-full hover:bg-ink/5 transition-colors">Home</a>
+      <a href="ironoak.html#services" class="underline-grow px-3 py-2 rounded-full hover:bg-ink/5 transition-colors">Services</a>
+      <a href="ironoak.html#about" class="underline-grow px-3 py-2 rounded-full hover:bg-ink/5 transition-colors">About</a>
+      <a href="ironoak.html#contact" class="underline-grow px-3 py-2 rounded-full hover:bg-ink/5 transition-colors">Contact</a>
+      <a href="booking.html" class="js-my-bookings underline-grow px-3 py-2 rounded-full hover:bg-ink/5 transition-colors">My Bookings</a>
+    </nav>
+    <div class="flex items-center gap-2 ml-auto">
+      <a href="booking.html" class="btn-pop hidden sm:inline-block bg-ink text-cream px-5 py-2.5 rounded-full font-600 text-sm">Book<span class="hidden sm:inline"> Now</span></a>
+      <button id="menuBtn" class="md:hidden w-9 h-9 flex flex-col justify-center items-center gap-1.5 rounded-full hover:bg-ink/5 transition-colors" aria-label="Menu">
+        <span class="block h-0.5 w-5 bg-ink transition-transform"></span><span class="block h-0.5 w-5 bg-ink transition-opacity"></span><span class="block h-0.5 w-5 bg-ink transition-transform"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="md:hidden bg-cream/95 backdrop-blur-md border border-oak/15 rounded-3xl mt-2 w-full max-w-[880px] mx-auto">
+    <div class="px-5 py-4 flex flex-col gap-1 font-500">
+      <a href="ironoak.html" class="mobnav px-3 py-2.5 rounded-full hover:bg-ink/5">Home</a>
+      <a href="ironoak.html#services" class="mobnav px-3 py-2.5 rounded-full hover:bg-ink/5">Services</a>
+      <a href="ironoak.html#about" class="mobnav px-3 py-2.5 rounded-full hover:bg-ink/5">About</a>
+      <a href="ironoak.html#contact" class="mobnav px-3 py-2.5 rounded-full hover:bg-ink/5">Contact</a>
+      <a href="booking.html" class="js-my-bookings mobnav px-3 py-2.5 rounded-full hover:bg-ink/5 text-left">My Bookings</a>
+      <a href="booking.html" class="mobnav btn-pop bg-ink text-cream text-center px-5 py-3 rounded-full font-600 mt-2">Book Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- COOKIES -->
+<section id="cookies" class="pt-32 pb-24 bg-white">
+  <div class="max-w-3xl mx-auto px-5 legal-copy">
+    <p class="text-brass font-600 text-sm">Legal</p>
+    <h2 class="font-display font-700 text-4xl mt-2">Cookie policy</h2>
+    <p class="mt-3 text-sm">Last updated 25 September 2026. This page explains what Iron &amp; Oak stores on your device when you use this website.</p>
+
+    <h3>What we store</h3>
+    <p class="mt-2">We do not run advertising cookies, analytics cookies or social trackers. We use browser storage for two essential things:</p>
+    <ul>
+      <li><strong>Cookie choice.</strong> We remember whether you accepted or limited storage to essential items, so the notice does not keep returning.</li>
+      <li><strong>Booking IDs.</strong> After you book, or after you look an ID up, we save that ID on this device so My Bookings can track or cancel the visit. The booking itself lives in our Google Sheet.</li>
+      <li><strong>Offer notice.</strong> We remember for this browser session that you closed the first-visit offer, so it does not pop up again while you browse.</li>
+    </ul>
+
+    <h3>Your choice</h3>
+    <p class="mt-2">Accept and Essential only both allow the items above, because the site does not set anything else. Essential only is there so the choice is explicit. You can clear these in your browser settings (site data / local storage for this website). Clearing them removes the IDs from this device; it does not cancel a booking. Cancel with the booking ID on the <a href="booking.html" class="underline underline-offset-2">booking page</a>.</p>
+    <p class="mt-3">Google Calendar opens on Google’s site only if you choose Add to Google Calendar. That visit is covered by Google’s own policies, not by a cookie we set.</p>
+    <p class="mt-4"><button type="button" id="cookieReset" class="btn-pop border border-ink px-4 py-2 rounded-full text-sm font-600">Change cookie choice</button></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink text-cream/80 pt-16 pb-8">
+  <div class="max-w-6xl mx-auto px-5 grid sm:grid-cols-2 md:grid-cols-4 gap-10">
+    <div>
+      <span class="font-display font-700 text-xl text-cream">Iron &amp; Oak</span>
+      <p class="mt-3 text-sm">Barbershop in the heart of Maboneng. Fades, beards, and straight-razor shaves since 2015.</p>
+    </div>
+    <div>
+      <h4 class="text-cream font-600 mb-3">Navigate</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="ironoak.html" class="hover:text-brasslight">Home</a></li>
+        <li><a href="ironoak.html#services" class="hover:text-brasslight">Services</a></li>
+        <li><a href="ironoak.html#about" class="hover:text-brasslight">About</a></li>
+        <li><a href="booking.html" class="hover:text-brasslight">Book Now</a></li>
+        <li><a href="booking.html#track" class="hover:text-brasslight">Track or cancel</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-cream font-600 mb-3">Contact</h4>
+      <ul class="space-y-2 text-sm">
+        <li>24 Market Street, Maboneng</li>
+        <li><a href="tel:+27116220198" class="hover:text-brasslight">011 622 0198</a></li>
+        <li><a href="mailto:chair@ironoakbarber.co.za" class="hover:text-brasslight">chair@ironoakbarber.co.za</a></li>
+      </ul>
+      <div class="flex gap-3 mt-4">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-brasslight">Instagram</a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" class="hover:text-brasslight">Facebook</a>
+      </div>
+    </div>
+    <div>
+      <h4 class="text-cream font-600 mb-3">Legal</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="terms.html" class="hover:text-brasslight">Terms &amp; Conditions</a></li>
+        <li><a href="privacy.html" class="hover:text-brasslight">Privacy Policy</a></li>
+        <li><a href="#cookies" class="hover:text-brasslight">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="text-center text-xs text-cream/40 mt-10">© 2026 Iron &amp; Oak Barber Co. All rights reserved.</p>
+</footer>
+
+
+<!-- COOKIE NOTICE -->
+<div id="cookieBanner" class="hidden fixed bottom-0 inset-x-0 z-40 px-4 pb-4">
+  <div class="max-w-3xl mx-auto bg-ink text-cream border border-brass/40 shadow-lg rounded-sm p-5 flex flex-col sm:flex-row sm:items-center gap-4">
+    <p class="text-sm text-cream/80">We store your cookie choice and booking IDs on this device so you can track or cancel a visit. We don’t use advertising cookies. <a href="#cookies" class="underline text-brasslight">Cookie policy</a></p>
+    <div class="cookie-actions flex gap-2 shrink-0">
+      <button type="button" id="cookieEssential" class="border border-cream/30 px-4 py-2 rounded-full text-sm">Essential only</button>
+      <button type="button" id="cookieAccept" class="bg-brass text-ink px-4 py-2 rounded-full text-sm font-600">Accept</button>
+    </div>
+  </div>
+</div>
+
+<script src="site.js"></script>
+
+</body>
+</html>

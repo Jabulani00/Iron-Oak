@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Iron & Oak Barber Co. in Maboneng. Book a one-hour chair, get a receipt with a booking ID, and add the visit to Google Calendar.">
+<title>Iron & Oak Barber Co. — Barbershop in Maboneng</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        ink: '#1B1712',
+        oak: '#3E2A1E',
+        brass: '#A9793A',
+        brasslight: '#C99A5B',
+        cream: '#F3ECDD',
+        burgundy: '#5C2A2A'
+      },
+      fontFamily: {
+        display: ['"Zilla Slab"', 'serif'],
+        body: ['Inter', 'sans-serif']
+      }
+    }
+  }
+}
+</script>
+<link rel="stylesheet" href="site.css">
+</head>
+<body class="font-body text-ink">
+
+<!-- HEADER -->
+<div id="headerWrap" style="padding-top:env(safe-area-inset-top,0px)">
+  <div id="navPill" class="bg-cream/90 backdrop-blur-md border border-oak/15 flex items-center gap-2 px-3 py-2 md:px-3.5 md:py-2 w-full max-w-[880px]">
+    <a href="#home" class="flex items-center gap-2 pl-2 pr-3">
+      <svg width="30" height="30" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="none" stroke="#1B1712" stroke-width="1.5"/><path d="M11 10 L20 20 L11 30 M13 10 h6 M13 30 h6" stroke="#A9793A" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M29 10 L20 20 L29 30" stroke="#1B1712" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      <span class="font-display font-700 text-base leading-none hidden sm:block">Iron &amp; Oak</span>
+    </a>
+    <div class="w-px h-6 bg-oak/15 hidden md:block"></div>
+    <nav class="hidden md:flex items-center gap-1 font-500 text-sm mx-1">
+      <a href="#home" class="underline-grow px-3 py-2 rounded-full hover:bg-ink/5 transition-colors" aria-current="page">Home</a>
+      <a href="#services" class="underline-grow px-3 py-2 rounded-full hover:bg-ink/5 transition-colors">Services</a>
+      <a href="#about" class="underline-grow px-3 py-2 rounded-full hover:bg-ink/5 transition-colors">About</a>
+      <a href="#contact" class="underline-grow px-3 py-2 rounded-full hover:bg-ink/5 transition-colors">Contact</a>
+      <a href="booking.html" class="js-my-bookings underline-grow px-3 py-2 rounded-full hover:bg-ink/5 transition-colors">My Bookings</a>
+    </nav>
+    <div class="flex items-center gap-2 ml-auto">
+      <a href="booking.html" class="btn-pop hidden sm:inline-block bg-ink text-cream px-5 py-2.5 rounded-full font-600 text-sm">Book<span class="hidden sm:inline"> Now</span></a>
+      <button id="menuBtn" class="md:hidden w-9 h-9 flex flex-col justify-center items-center gap-1.5 rounded-full hover:bg-ink/5 transition-colors" aria-label="Menu">
+        <span class="block h-0.5 w-5 bg-ink transition-transform"></span><span class="block h-0.5 w-5 bg-ink transition-opacity"></span><span class="block h-0.5 w-5 bg-ink transition-transform"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="md:hidden bg-cream/95 backdrop-blur-md border border-oak/15 rounded-3xl mt-2 w-full max-w-[880px] mx-auto">
+    <div class="px-5 py-4 flex flex-col gap-1 font-500">
+      <a href="#home" class="mobnav px-3 py-2.5 rounded-full hover:bg-ink/5" aria-current="page">Home</a>
+      <a href="#services" class="mobnav px-3 py-2.5 rounded-full hover:bg-ink/5">Services</a>
+      <a href="#about" class="mobnav px-3 py-2.5 rounded-full hover:bg-ink/5">About</a>
+      <a href="#contact" class="mobnav px-3 py-2.5 rounded-full hover:bg-ink/5">Contact</a>
+      <a href="booking.html" class="js-my-bookings mobnav px-3 py-2.5 rounded-full hover:bg-ink/5 text-left">My Bookings</a>
+      <a href="booking.html" class="mobnav btn-pop bg-ink text-cream text-center px-5 py-3 rounded-full font-600 mt-2">Book Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="relative min-h-[92vh] flex items-center bg-ink text-cream overflow-hidden">
+    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1600&auto=format&fit=crop" alt="Barber giving a fade haircut" class="hero-img absolute inset-0 w-full h-full object-cover opacity-35">
+    <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-ink/30"></div>
+    <div class="relative max-w-6xl mx-auto px-5 py-24 pt-32 w-full">
+      <p class="text-brasslight font-600 tracking-wide mb-4 opacity-0 animate-[fadeUp_.8s_.1s_cubic-bezier(.16,1,.3,1)_forwards]">Maboneng, Johannesburg</p>
+      <h1 class="font-display font-700 text-5xl sm:text-6xl md:text-7xl leading-[1.02] max-w-3xl opacity-0 animate-[fadeUp_.9s_.25s_cubic-bezier(.16,1,.3,1)_forwards]">Sharp cuts, straight razors, no rush.</h1>
+      <p class="mt-6 max-w-xl text-cream/80 text-lg opacity-0 animate-[fadeUp_.9s_.4s_cubic-bezier(.16,1,.3,1)_forwards]">Iron & Oak has been shaping Joburg's fades, beards and business cuts since 2015. Walk in for a trim or book your regular slot online in under a minute.</p>
+      <div class="mt-9 flex flex-wrap gap-4 opacity-0 animate-[fadeUp_.9s_.55s_cubic-bezier(.16,1,.3,1)_forwards]">
+        <a href="booking.html" class="btn-pop bg-brass text-ink px-7 py-3.5 rounded-full font-600">Book an appointment</a>
+        <a href="#services" class="btn-pop border border-cream/40 px-7 py-3.5 rounded-full font-600 hover:bg-cream/10">See services &amp; prices</a>
+      </div>
+    </div>
+    <a href="#services" aria-label="Scroll to services" class="absolute bottom-7 left-1/2 -translate-x-1/2 text-cream/60 hover:text-cream transition-colors animate-bounce">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 4v14M6 13l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+  <div class="razor-line"></div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="py-24 bg-cream">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="max-w-xl reveal">
+      <h2 class="font-display font-700 text-4xl">Services &amp; pricing</h2>
+      <p class="mt-3 text-ink/70">Every cut starts with a consultation and ends with a hot towel. Prices in ZAR.</p>
+    </div>
+    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger">
+
+      <div class="lift bg-white border border-oak/10 rounded-sm overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=600&auto=format&fit=crop" class="h-40 w-full object-cover" alt="Barbershop service photo">
+        <div class="p-6">
+        <h3 class="font-display font-600 text-xl">Classic Haircut</h3>
+        <p class="text-sm text-ink/60 mt-1">Scissor or clipper cut, styled and finished.</p>
+        <div class="mt-4 flex items-end justify-between"><span class="text-2xl font-700 text-brass">R220</span><span class="text-xs text-ink/50">45 min</span></div>
+      </div></div>
+      <div class="lift bg-white border border-oak/10 rounded-sm overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=600&auto=format&fit=crop" class="h-40 w-full object-cover" alt="Barbershop service photo">
+        <div class="p-6">
+        <h3 class="font-display font-600 text-xl">Skin Fade</h3>
+        <p class="text-sm text-ink/60 mt-1">Precision fade blended to skin, any length on top.</p>
+        <div class="mt-4 flex items-end justify-between"><span class="text-2xl font-700 text-brass">R260</span><span class="text-xs text-ink/50">50 min</span></div>
+      </div></div>
+      <div class="lift bg-white border border-oak/10 rounded-sm overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=80&w=600&auto=format&fit=crop" class="h-40 w-full object-cover" alt="Barbershop service photo">
+        <div class="p-6">
+        <h3 class="font-display font-600 text-xl">Beard Trim &amp; Line-up</h3>
+        <p class="text-sm text-ink/60 mt-1">Shape, trim and hot towel with straight-razor edges.</p>
+        <div class="mt-4 flex items-end justify-between"><span class="text-2xl font-700 text-brass">R150</span><span class="text-xs text-ink/50">30 min</span></div>
+      </div></div>
+      <div class="lift bg-white border border-oak/10 rounded-sm overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1583500178690-f7fd8b4e94a3?q=80&w=600&auto=format&fit=crop" class="h-40 w-full object-cover" alt="Barbershop service photo">
+        <div class="p-6">
+        <h3 class="font-display font-600 text-xl">Cut &amp; Beard Package</h3>
+        <p class="text-sm text-ink/60 mt-1">Full haircut plus beard trim, our most-booked combo.</p>
+        <div class="mt-4 flex items-end justify-between"><span class="text-2xl font-700 text-brass">R340</span><span class="text-xs text-ink/50">75 min</span></div>
+      </div></div>
+      <div class="lift bg-white border border-oak/10 rounded-sm overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?q=80&w=600&auto=format&fit=crop" class="h-40 w-full object-cover" alt="Barbershop service photo">
+        <div class="p-6">
+        <h3 class="font-display font-600 text-xl">Kids Cut (under 12)</h3>
+        <p class="text-sm text-ink/60 mt-1">Patient, quick cuts for the younger regulars.</p>
+        <div class="mt-4 flex items-end justify-between"><span class="text-2xl font-700 text-brass">R140</span><span class="text-xs text-ink/50">30 min</span></div>
+      </div></div>
+      <div class="lift bg-white border border-oak/10 rounded-sm overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?q=80&w=600&auto=format&fit=crop" class="h-40 w-full object-cover" alt="Barbershop service photo">
+        <div class="p-6">
+        <h3 class="font-display font-600 text-xl">Hot Towel Shave</h3>
+        <p class="text-sm text-ink/60 mt-1">Traditional straight-razor shave, hot towel finish.</p>
+        <div class="mt-4 flex items-end justify-between"><span class="text-2xl font-700 text-brass">R190</span><span class="text-xs text-ink/50">40 min</span></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-2 gap-12 items-center">
+    <div class="reveal">
+      <h2 class="font-display font-700 text-4xl">Built on Market Street, one chair at a time.</h2>
+      <p class="mt-5 text-ink/70 leading-relaxed">Iron & Oak opened in 2015 with two chairs and a single clipper. A decade on, we're a five-barber shop known across Maboneng for consistent fades and a shop floor that still smells like bay rum. We train on the tools, not just the trends — every barber here served an apprenticeship before touching a paying client.</p>
+      <div class="mt-8 grid grid-cols-2 gap-6">
+        <div><p class="text-brass font-display text-3xl font-700">10+</p><p class="text-sm text-ink/60">Years cutting</p></div>
+        <div><p class="text-brass font-display text-3xl font-700">5</p><p class="text-sm text-ink/60">Barbers on the floor</p></div>
+      </div>
+    </div>
+    <div class="about-photos grid grid-cols-2 gap-3 sm:gap-4 reveal">
+      <img src="https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?q=80&w=800&auto=format&fit=crop" class="lift rounded-sm object-cover h-40 sm:h-72 w-full" alt="Barber Thabo cutting hair">
+      <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=800&auto=format&fit=crop" class="lift rounded-sm object-cover h-40 sm:h-72 w-full sm:mt-8" alt="Barber Sipho trimming a beard">
+    </div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-5 mt-20">
+    <h3 class="font-display font-700 text-2xl mb-8 reveal">Meet the barbers</h3>
+    <div class="grid sm:grid-cols-3 gap-6 reveal-stagger">
+      <div class="text-center">
+        <img src="https://images.unsplash.com/photo-1571894821634-e35e4f409b8e?q=80&w=400&auto=format&fit=crop" class="rounded-full w-28 h-28 object-cover mx-auto" alt="Thabo Nkosi">
+        <p class="mt-3 font-600">Thabo Nkosi</p><p class="text-sm text-brass">Owner &amp; Master Barber</p>
+      </div>
+      <div class="text-center">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop" class="rounded-full w-28 h-28 object-cover mx-auto" alt="Sipho Dlamini">
+        <p class="mt-3 font-600">Sipho Dlamini</p><p class="text-sm text-brass">Fades &amp; Beards</p>
+      </div>
+      <div class="text-center">
+        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&auto=format&fit=crop" class="rounded-full w-28 h-28 object-cover mx-auto" alt="Ayanda Mokoena">
+        <p class="mt-3 font-600">Ayanda Mokoena</p><p class="text-sm text-brass">Classic Cuts &amp; Kids</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-5">
+    <h2 class="font-display font-700 text-4xl reveal">Inside the shop</h2>
+    <div class="shop-photos mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 reveal-stagger">
+      <img class="feature lift rounded-sm object-cover h-52 md:h-full w-full col-span-2 md:row-span-2" src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?q=80&w=900&auto=format&fit=crop" alt="Barbershop interior with leather chairs">
+      <img class="lift rounded-sm object-cover h-36 md:h-56 w-full" src="https://images.unsplash.com/photo-1512690459411-b9245aed614b?q=80&w=500&auto=format&fit=crop" alt="Close-up of clippers and combs">
+      <img class="lift rounded-sm object-cover h-36 md:h-56 w-full" src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?q=80&w=500&auto=format&fit=crop" alt="Barber sharpening a straight razor">
+      <img class="lift rounded-sm object-cover h-36 md:h-56 w-full" src="https://images.unsplash.com/photo-1470259078422-826894b933aa?q=80&w=500&auto=format&fit=crop" alt="Finished sharp haircut result">
+      <img class="lift rounded-sm object-cover h-36 md:h-56 w-full" src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?q=80&w=500&auto=format&fit=crop" alt="Row of barber chairs and mirrors">
+    </div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section id="booking" class="py-20 bg-ink text-cream">
+  <div class="max-w-3xl mx-auto px-5 text-center reveal">
+    <h2 class="font-display font-700 text-4xl">Book your chair</h2>
+    <p class="mt-3 text-cream/70">Pick a day and an hour. Every visit lasts one hour, with 8 spots in each hour. You get a receipt with a booking ID, and you can add the visit to Google Calendar.</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <a href="booking.html" class="btn-pop bg-brass text-ink px-7 py-3.5 rounded-full font-600">Book now</a>
+      <a href="booking.html#track" class="btn-pop border border-cream/40 px-7 py-3.5 rounded-full font-600">Track or cancel</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-24 bg-cream">
+  <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-2 gap-12">
+    <div class="reveal">
+      <h2 class="font-display font-700 text-4xl">Find us</h2>
+      <ul class="mt-6 space-y-3 text-ink/80">
+        <li><strong>Address:</strong> 24 Market Street, Maboneng, Johannesburg, 2094</li>
+        <li><strong>Phone:</strong> <a href="tel:+27116220198" class="underline-grow">011 622 0198</a></li>
+        <li><strong>Email:</strong> <a href="mailto:chair@ironoakbarber.co.za" class="underline-grow">chair@ironoakbarber.co.za</a></li>
+      </ul>
+      <h3 class="font-display font-600 text-xl mt-8 mb-3">Opening hours</h3>
+      <ul class="text-ink/80 space-y-1 text-sm">
+        <li class="flex justify-between max-w-xs"><span>Mon – Fri</span><span>08:00 – 19:00</span></li>
+        <li class="flex justify-between max-w-xs"><span>Saturday</span><span>08:00 – 17:00</span></li>
+        <li class="flex justify-between max-w-xs"><span>Sunday</span><span>Closed</span></li>
+      </ul>
+    </div>
+    <div class="reveal lift rounded-sm overflow-hidden border border-oak/15 h-80 md:h-full min-h-[280px]">
+      <iframe title="map" class="w-full h-full" loading="lazy" src="https://www.google.com/maps?q=Maboneng+Johannesburg&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink text-cream/80 pt-16 pb-8">
+  <div class="max-w-6xl mx-auto px-5 grid sm:grid-cols-2 md:grid-cols-4 gap-10">
+    <div>
+      <span class="font-display font-700 text-xl text-cream">Iron &amp; Oak</span>
+      <p class="mt-3 text-sm">Barbershop in the heart of Maboneng. Fades, beards, and straight-razor shaves since 2015.</p>
+    </div>
+    <div>
+      <h4 class="text-cream font-600 mb-3">Navigate</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="#home" class="hover:text-brasslight">Home</a></li>
+        <li><a href="#services" class="hover:text-brasslight">Services</a></li>
+        <li><a href="#about" class="hover:text-brasslight">About</a></li>
+        <li><a href="booking.html" class="hover:text-brasslight">Book Now</a></li>
+        <li><a href="booking.html#track" class="hover:text-brasslight">Track or cancel</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-cream font-600 mb-3">Contact</h4>
+      <ul class="space-y-2 text-sm">
+        <li>24 Market Street, Maboneng</li>
+        <li><a href="tel:+27116220198" class="hover:text-brasslight">011 622 0198</a></li>
+        <li><a href="mailto:chair@ironoakbarber.co.za" class="hover:text-brasslight">chair@ironoakbarber.co.za</a></li>
+      </ul>
+      <div class="flex gap-3 mt-4">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-brasslight">Instagram</a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" class="hover:text-brasslight">Facebook</a>
+      </div>
+    </div>
+    <div>
+      <h4 class="text-cream font-600 mb-3">Legal</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="terms.html" class="hover:text-brasslight">Terms &amp; Conditions</a></li>
+        <li><a href="privacy.html" class="hover:text-brasslight">Privacy Policy</a></li>
+        <li><a href="cookies.html" class="hover:text-brasslight">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="text-center text-xs text-cream/40 mt-10">© 2026 Iron &amp; Oak Barber Co. All rights reserved.</p>
+</footer>
+
+
+<!-- COOKIE NOTICE -->
+<div id="cookieBanner" class="hidden fixed bottom-0 inset-x-0 z-40 px-4 pb-4">
+  <div class="max-w-3xl mx-auto bg-ink text-cream border border-brass/40 shadow-lg rounded-sm p-5 flex flex-col sm:flex-row sm:items-center gap-4">
+    <p class="text-sm text-cream/80">We store your cookie choice and booking IDs on this device so you can track or cancel a visit. We don’t use advertising cookies. <a href="cookies.html" class="underline text-brasslight">Cookie policy</a></p>
+    <div class="cookie-actions flex gap-2 shrink-0">
+      <button type="button" id="cookieEssential" class="border border-cream/30 px-4 py-2 rounded-full text-sm">Essential only</button>
+      <button type="button" id="cookieAccept" class="bg-brass text-ink px-4 py-2 rounded-full text-sm font-600">Accept</button>
+    </div>
+  </div>
+</div>
+
+<!-- POPUP -->
+<div id="popup" class="fixed inset-0 z-50 flex items-center justify-center bg-ink/70 px-5" role="dialog" aria-modal="true" aria-labelledby="offerTitle">
+  <div class="bg-cream text-ink rounded-sm max-w-sm w-full p-8 relative">
+    <button type="button" id="popupClose" class="absolute top-3 right-4 text-xl text-ink/50 hover:text-ink" aria-label="Close">&times;</button>
+    <p class="text-brass font-600 text-sm">First visit?</p>
+    <h3 id="offerTitle" class="font-display font-700 text-2xl mt-1">Take 15% off your first cut</h3>
+    <p class="mt-3 text-ink/70 text-sm">Mention code <strong>FIRSTCHAIR</strong> at the till and we’ll take it off your first cut. See the <a href="terms.html" class="underline underline-offset-2">terms</a>.</p>
+    <button type="button" id="popupBook" class="mt-5 w-full bg-ink text-cream py-3 rounded-sm font-600 hover:bg-brass transition">Book now</button>
+  </div>
+</div>
+
+<script src="site.js"></script>
+
+</body>
+</html>

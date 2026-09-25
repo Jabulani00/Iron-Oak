@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Book a one-hour chair at Iron & Oak in Maboneng. Each hour holds 8 spots. Get a receipt and a booking ID you can track or cancel.">
+<title>Book a chair — Iron & Oak Barber Co.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        ink: '#1B1712',
+        oak: '#3E2A1E',
+        brass: '#A9793A',
+        brasslight: '#C99A5B',
+        cream: '#F3ECDD',
+        burgundy: '#5C2A2A'
+      },
+      fontFamily: {
+        display: ['"Zilla Slab"', 'serif'],
+        body: ['Inter', 'sans-serif']
+      }
+    }
+  }
+}
+</script>
+</head>
+<body class="font-body text-ink">
+<!-- HEADER -->
+<div id="headerWrap" style="padding-top:env(safe-area-inset-top,0px)">
+  <div id="navPill" class="bg-cream/90 backdrop-blur-md border border-oak/15 flex items-center gap-2 px-3 py-2 md:px-3.5 md:py-2 w-full max-w-[880px]">
+    <a href="ironoak.html" class="flex items-center gap-2 pl-2 pr-3">
+      <svg width="30" height="30" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="none" stroke="#1B1712" stroke-width="1.5"/><path d="M11 10 L20 20 L11 30 M13 10 h6 M13 30 h6" stroke="#A9793A" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M29 10 L20 20 L29 30" stroke="#1B1712" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      <span class="font-display font-700 text-base leading-none hidden sm:block">Iron &amp; Oak</span>
+    </a>
+    <div class="w-px h-6 bg-oak/15 hidden md:block"></div>
+    <nav class="hidden md:flex items-center gap-1 font-500 text-sm mx-1">
+      <a href="ironoak.html" class="underline-grow px-3 py-2 rounded-full hover:bg-ink/5 transition-colors">Home</a>
+      <a href="ironoak.html#services" class="underline-grow px-3 py-2 rounded-full hover:bg-ink/5 transition-colors">Services</a>
+      <a href="ironoak.html#about" class="underline-grow px-3 py-2 rounded-full hover:bg-ink/5 transition-colors">About</a>
+      <a href="ironoak.html#contact" class="underline-grow px-3 py-2 rounded-full hover:bg-ink/5 transition-colors">Contact</a>
+      <a href="#mine" class="js-my-bookings underline-grow px-3 py-2 rounded-full hover:bg-ink/5 transition-colors">My Bookings</a>
+    </nav>
+    <div class="flex items-center gap-2 ml-auto">
+      <a href="#booking" class="btn-pop hidden sm:inline-block bg-ink text-cream px-5 py-2.5 rounded-full font-600 text-sm">Book<span class="hidden sm:inline"> Now</span></a>
+      <button id="menuBtn" class="md:hidden w-9 h-9 flex flex-col justify-center items-center gap-1.5 rounded-full hover:bg-ink/5 transition-colors" aria-label="Menu">
+        <span class="block h-0.5 w-5 bg-ink transition-transform"></span><span class="block h-0.5 w-5 bg-ink transition-opacity"></span><span class="block h-0.5 w-5 bg-ink transition-transform"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="md:hidden bg-cream/95 backdrop-blur-md border border-oak/15 rounded-3xl mt-2 w-full max-w-[880px] mx-auto">
+    <div class="px-5 py-4 flex flex-col gap-1 font-500">
+      <a href="ironoak.html" class="mobnav px-3 py-2.5 rounded-full hover:bg-ink/5">Home</a>
+      <a href="ironoak.html#services" class="mobnav px-3 py-2.5 rounded-full hover:bg-ink/5">Services</a>
+      <a href="ironoak.html#about" class="mobnav px-3 py-2.5 rounded-full hover:bg-ink/5">About</a>
+      <a href="ironoak.html#contact" class="mobnav px-3 py-2.5 rounded-full hover:bg-ink/5">Contact</a>
+      <a href="#mine" class="js-my-bookings mobnav px-3 py-2.5 rounded-full hover:bg-ink/5 text-left">My Bookings</a>
+      <a href="#booking" class="mobnav btn-pop bg-ink text-cream text-center px-5 py-3 rounded-full font-600 mt-2">Book Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- BOOKING -->
+<section id="booking" class="pt-32 pb-24 bg-ink text-cream">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="max-w-2xl reveal">
+      <h2 class="font-display font-700 text-4xl">Book your chair</h2>
+      <p class="mt-3 text-cream/70">Pick a day and an hour. Every booking lasts one hour, and each hour holds 8 spots. You get a receipt with a booking ID so you can track or cancel, then add the visit to Google Calendar.</p>
+    </div>
+
+    <div class="mt-10 grid lg:grid-cols-5 gap-8 items-start">
+      <form id="bookingForm" class="lg:col-span-3 grid sm:grid-cols-2 gap-5 reveal">
+        <div class="sm:col-span-2">
+          <label class="block text-sm mb-1.5 text-cream/80" for="bName">Full name</label>
+          <input id="bName" name="name" autocomplete="name" type="text" class="w-full rounded-sm px-4 py-3 bg-cream text-ink outline-none focus:ring-2 focus:ring-brass" placeholder="Your name">
+        </div>
+        <div>
+          <label class="block text-sm mb-1.5 text-cream/80" for="bEmail">Email</label>
+          <input id="bEmail" name="email" autocomplete="email" type="email" class="w-full rounded-sm px-4 py-3 bg-cream text-ink outline-none focus:ring-2 focus:ring-brass" placeholder="you@email.com">
+        </div>
+        <div>
+          <label class="block text-sm mb-1.5 text-cream/80" for="bPhone">Phone</label>
+          <input id="bPhone" name="tel" autocomplete="tel" type="tel" class="w-full rounded-sm px-4 py-3 bg-cream text-ink outline-none focus:ring-2 focus:ring-brass" placeholder="082 000 0000">
+        </div>
+        <div>
+          <label class="block text-sm mb-1.5 text-cream/80" for="bService">Service</label>
+          <select id="bService" class="w-full rounded-sm px-4 py-3 bg-cream text-ink outline-none focus:ring-2 focus:ring-brass">
+            <option value="Classic Haircut">Classic Haircut — R220</option>
+            <option value="Skin Fade">Skin Fade — R260</option>
+            <option value="Beard Trim & Line-up">Beard Trim &amp; Line-up — R150</option>
+            <option value="Cut & Beard Package">Cut &amp; Beard Package — R340</option>
+            <option value="Kids Cut">Kids Cut — R140</option>
+            <option value="Hot Towel Shave">Hot Towel Shave — R190</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm mb-1.5 text-cream/80" for="bBarber">Barber</label>
+          <select id="bBarber" class="w-full rounded-sm px-4 py-3 bg-cream text-ink outline-none focus:ring-2 focus:ring-brass">
+            <option>No preference</option>
+            <option>Thabo Nkosi</option>
+            <option>Sipho Dlamini</option>
+            <option>Ayanda Mokoena</option>
+          </select>
+        </div>
+        <div class="sm:col-span-2">
+          <label class="block text-sm mb-1.5 text-cream/80" for="bDate">Day</label>
+          <input id="bDate" type="date" class="w-full rounded-sm px-4 py-3 bg-cream text-ink outline-none focus:ring-2 focus:ring-brass">
+          <p class="mt-2 text-xs text-cream/50">Monday–Friday 08:00–19:00 · Saturday 08:00–17:00 · Sunday closed. You can book up to 90 days ahead.</p>
+        </div>
+        <div class="sm:col-span-2">
+          <p class="text-sm mb-2 text-cream/80">Hour <span class="text-cream/50">· 1 hour each · 8 spots</span></p>
+          <div id="slotGrid" class="grid grid-cols-3 sm:grid-cols-4 gap-2" role="group" aria-label="Available hours"></div>
+          <p id="slotHint" class="text-sm text-cream/60 mt-2" aria-live="polite">Choose a day to see open hours.</p>
+        </div>
+        <label class="sm:col-span-2 flex items-start gap-3 text-sm text-cream/80">
+          <input id="bTerms" type="checkbox" class="mt-1 w-5 h-5 shrink-0 accent-brass">
+          <span>I agree to the <a href="terms.html" class="text-brasslight underline underline-offset-2">Terms &amp; Conditions</a> and <a href="privacy.html" class="text-brasslight underline underline-offset-2">Privacy Policy</a>.</span>
+        </label>
+        <p id="formError" role="alert" class="hidden sm:col-span-2 text-sm text-[#F3C7C7]"></p>
+        <button id="bookBtn" type="submit" class="sm:col-span-2 mt-1 bg-brass text-ink font-600 py-3.5 rounded-sm hover:bg-brasslight transition">Confirm booking</button>
+        <p id="storeNote" class="sm:col-span-2 text-xs text-cream/45"></p>
+      </form>
+
+      <aside id="track" class="lg:col-span-2 bg-cream text-ink rounded-sm p-6 reveal">
+        <h3 class="font-display font-700 text-2xl">Track or cancel</h3>
+        <p class="text-sm text-ink/60 mt-1">Enter the booking ID from your receipt.</p>
+        <form id="trackForm" class="mt-4 flex gap-2">
+          <label class="sr-only" for="trackId">Booking ID</label>
+          <input id="trackId" type="text" autocomplete="off" spellcheck="false" placeholder="IO-ABC123" class="min-w-0 flex-1 rounded-sm px-3 py-2.5 border border-oak/20 outline-none focus:ring-2 focus:ring-brass uppercase">
+          <button type="submit" class="btn-pop bg-ink text-cream px-4 py-2.5 rounded-sm font-600 text-sm shrink-0">Look up</button>
+        </form>
+        <div id="trackResult" class="mt-2" aria-live="polite"></div>
+      </aside>
+    </div>
+
+    <article id="receipt" class="hidden mt-10 max-w-xl reveal" aria-live="polite"></article>
+  </div>
+</section>
+
+<!-- MY BOOKINGS MODAL -->
+<div id="bookingsModal" class="hidden fixed inset-0 z-50 items-center justify-center bg-ink/70 px-5">
+  <div class="bg-cream text-ink rounded-sm max-w-lg w-full max-h-[85vh] overflow-y-auto p-7 relative">
+    <button onclick="closeBookingsModal()" class="absolute top-3 right-4 text-xl text-ink/50 hover:text-ink">&times;</button>
+    <h3 class="font-display font-700 text-2xl">My bookings</h3>
+    <p class="text-sm text-ink/60 mt-1">Booking IDs saved on this device. Open one to see the receipt, move the hour, or cancel.</p>
+    <div id="bookingsList" class="mt-6 space-y-4"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-ink text-cream/80 pt-16 pb-8">
+  <div class="max-w-6xl mx-auto px-5 grid sm:grid-cols-2 md:grid-cols-4 gap-10">
+    <div>
+      <span class="font-display font-700 text-xl text-cream">Iron &amp; Oak</span>
+      <p class="mt-3 text-sm">Barbershop in the heart of Maboneng. Fades, beards, and straight-razor shaves since 2015.</p>
+    </div>
+    <div>
+      <h4 class="text-cream font-600 mb-3">Navigate</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="ironoak.html" class="hover:text-brasslight">Home</a></li>
+        <li><a href="ironoak.html#services" class="hover:text-brasslight">Services</a></li>
+        <li><a href="ironoak.html#about" class="hover:text-brasslight">About</a></li>
+        <li><a href="#booking" class="hover:text-brasslight">Book Now</a></li>
+        <li><a href="#track" class="hover:text-brasslight">Track or cancel</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-cream font-600 mb-3">Contact</h4>
+      <ul class="space-y-2 text-sm">
+        <li>24 Market Street, Maboneng</li>
+        <li><a href="tel:+27116220198" class="hover:text-brasslight">011 622 0198</a></li>
+        <li><a href="mailto:chair@ironoakbarber.co.za" class="hover:text-brasslight">chair@ironoakbarber.co.za</a></li>
+      </ul>
+      <div class="flex gap-3 mt-4">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-brasslight">Instagram</a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" class="hover:text-brasslight">Facebook</a>
+      </div>
+    </div>
+    <div>
+      <h4 class="text-cream font-600 mb-3">Legal</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="terms.html" class="hover:text-brasslight">Terms &amp; Conditions</a></li>
+        <li><a href="privacy.html" class="hover:text-brasslight">Privacy Policy</a></li>
+        <li><a href="cookies.html" class="hover:text-brasslight">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="text-center text-xs text-cream/40 mt-10">© 2026 Iron &amp; Oak Barber Co. All rights reserved.</p>
+</footer>
+
+
+<!-- COOKIE NOTICE -->
+<div id="cookieBanner" class="hidden fixed bottom-0 inset-x-0 z-40 px-4 pb-4">
+  <div class="max-w-3xl mx-auto bg-ink text-cream border border-brass/40 shadow-lg rounded-sm p-5 flex flex-col sm:flex-row sm:items-center gap-4">
+    <p class="text-sm text-cream/80">We store your cookie choice and booking IDs on this device so you can track or cancel a visit. We don’t use advertising cookies. <a href="cookies.html" class="underline text-brasslight">Cookie policy</a></p>
+    <div class="cookie-actions flex gap-2 shrink-0">
+      <button type="button" id="cookieEssential" class="border border-cream/30 px-4 py-2 rounded-full text-sm">Essential only</button>
+      <button type="button" id="cookieAccept" class="bg-brass text-ink px-4 py-2 rounded-full text-sm font-600">Accept</button>
+    </div>
+  </div>
+</div>
+
+<script src="site.js"></script>
+<script>
+/* Google Sheet database
+   1. Create a Google Sheet and open Extensions → Apps Script.
+   2. Paste apps-script.gs, save, and run myFunction() once.
+      That creates the tab named BARBER-ONE.
+   3. Deploy → New deployment → Web app → Execute as Me → Anyone.
+   4. Paste the /exec URL below. Leave it empty to use this browser as the book.
+*/
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwZKNAoT0LHDFjvpfdg_OSN2l21ZAA-vWEQOF0rFA1Ip0J4sMMknZPAEJEbzbtZYZHU/exec';
+
+const SERVICES = {
+  'Classic Haircut': 220,
+  'Skin Fade': 260,
+  'Beard Trim & Line-up': 150,
+  'Cut & Beard Package': 340,
+  'Kids Cut': 140,
+  'Hot Towel Shave': 190
+};
+const BARBERS = ['No preference', 'Thabo Nkosi', 'Sipho Dlamini', 'Ayanda Mokoena'];
+const CAPACITY = 8;
+const LOCAL_KEY = 'ironoak_barber_one';
+const ID_KEY = 'ironoak_ids';
+const SHOP_LOCATION = '24 Market Street, Maboneng, Johannesburg, 2094';
+
+let selectedTime = '';
+let slotsRequest = 0;
+let saving = false;
+const bookingCache = {};
+
+function johannesburgParts() {
+  const fmt = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Africa/Johannesburg',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hourCycle: 'h23'
+  });
+  const parts = Object.fromEntries(fmt.formatToParts(new Date()).map((part) => [part.type, part.value]));
+  if (parts.hour === '24') parts.hour = '00';
+  parts.hour = String(parts.hour).padStart(2, '0');
+  parts.minute = String(parts.minute).padStart(2, '0');
+  parts.second = String(parts.second || '00').padStart(2, '0');
+  return parts;
+}
+function todayJohannesburg() {
+  const parts = johannesburgParts();
+  return parts.year + '-' + parts.month + '-' + parts.day;
+}
+function nowStamp() {
+  const parts = johannesburgParts();
+  return parts.year + '-' + parts.month + '-' + parts.day + ' ' + parts.hour + ':' + parts.minute + ':' + parts.second;
+}
+function addDays(iso, days) {
+  const [year, month, day] = iso.split('-').map(Number);
+  return new Date(Date.UTC(year, month - 1, day + days)).toISOString().slice(0, 10);
+}
+function weekday(dateStr) {
+  const [year, month, day] = dateStr.split('-').map(Number);
+  return new Date(Date.UTC(year, month - 1, day, 12)).getUTCDay();
+}
+function hoursFor(dateStr) {
+  const day = weekday(dateStr);
+  if (day === 0) return [];
+  const last = day === 6 ? 16 : 18;
+  const hours = [];
+  for (let hour = 8; hour <= last; hour++) hours.push(String(hour).padStart(2, '0') + ':00');
+  return hours;
+}
+function endTime(time) {
+  return String(Number(String(time).slice(0, 2)) + 1).padStart(2, '0') + ':00';
+}
+function isPastSlot(date, time) {
+  const parts = johannesburgParts();
+  return (date + ' ' + time) <= (parts.year + '-' + parts.month + '-' + parts.day + ' ' + parts.hour + ':' + parts.minute);
+}
+function esc(value) {
+  return String(value ?? '').replace(/[&<>"']/g, (char) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[char]));
+}
+function prettyDate(iso) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(iso || '')) return iso || '';
+  const [year, month, day] = iso.split('-').map(Number);
+  return new Intl.DateTimeFormat('en-ZA', {
+    weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC'
+  }).format(new Date(Date.UTC(year, month - 1, day, 12)));
+}
+function spotLabel(left) {
+  if (left <= 0) return 'Full · 8/8';
+  if (left === 8) return '8 spots open';
+  if (left === 1) return '1 of 8 left';
+  return left + ' of 8 left';
+}
+function usingSheet() {
+  return Boolean(APPS_SCRIPT_URL) && !/PASTE|YOUR_WEB_APP/i.test(APPS_SCRIPT_URL);
+}
+
+function localRows() {
+  try { return JSON.parse(localStorage.getItem(LOCAL_KEY)) || []; }
+  catch (err) { return []; }
+}
+function saveLocal(rows) {
+  localStorage.setItem(LOCAL_KEY, JSON.stringify(rows));
+}
+function remembered() {
+  try { return JSON.parse(localStorage.getItem(ID_KEY)) || []; }
+  catch (err) { return []; }
+}
+function remember(id) {
+  const ids = remembered().filter((item) => item !== id);
+  ids.unshift(id);
+  localStorage.setItem(ID_KEY, JSON.stringify(ids.slice(0, 30)));
+}
+function forgetId(id) {
+  localStorage.setItem(ID_KEY, JSON.stringify(remembered().filter((item) => item !== id)));
+}
+function taken(rows, date, time, ignoreId) {
+  return rows.filter((row) => row.date === date && row.time === time && row.status === 'confirmed' && row.id !== ignoreId).length;
+}
+function assertBookable(date, time) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date || '')) throw new Error('Choose a valid date.');
+  const today = todayJohannesburg();
+  if (date < today) throw new Error('That day has already passed.');
+  const ahead = (Date.parse(date + 'T00:00:00Z') - Date.parse(today + 'T00:00:00Z')) / 86400000;
+  if (ahead > 90) throw new Error('Bookings open up to 90 days ahead.');
+  if (weekday(date) === 0) throw new Error('We are closed on Sundays.');
+  if (!hoursFor(date).includes(time)) throw new Error('Choose an hour we are open.');
+  if (isPastSlot(date, time)) throw new Error('That hour has already started.');
+}
+function newId(rows) {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  const existing = new Set(rows.map((row) => row.id));
+  for (let guard = 0; guard < 20; guard++) {
+    let id = 'IO-';
+    for (let n = 0; n < 6; n++) id += chars[Math.floor(Math.random() * chars.length)];
+    if (!existing.has(id)) return id;
+  }
+  throw new Error('Could not create a booking ID. Try again.');
+}
+function localFind(id, rows) {
+  const clean = String(id || '').trim().toUpperCase();
+  if (!/^IO-[A-Z0-9]{6}$/.test(clean)) throw new Error('Enter a booking ID like IO-ABC123.');
+  const row = rows.find((item) => String(item.id).toUpperCase() === clean);
+  if (!row) throw new Error('No booking found for ' + clean + '.');
+  return row;
+}
+function localAvailability(date) {
+  date = String(date || '').trim();
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error('Choose a valid date.');
+  if (weekday(date) === 0) {
+    return { ok: true, date, closed: true, reason: 'Sunday — the shop is closed.', capacity: CAPACITY, slots: [] };
+  }
+  const rows = localRows();
+  return {
+    ok: true,
+    date,
+    closed: false,
+    capacity: CAPACITY,
+    slots: hoursFor(date).map((time) => {
+      const booked = taken(rows, date, time);
+      return { time, end: endTime(time), booked, left: Math.max(CAPACITY - booked, 0), past: isPastSlot(date, time) };
+    })
+  };
+}
+function guestFields(payload) {
+  const name = String(payload.name || '').trim();
+  const email = String(payload.email || '').trim().toLowerCase();
+  const phone = String(payload.phone || '').trim();
+  const service = String(payload.service || '').trim();
+  let barber = String(payload.barber || '').trim();
+  if (name.length < 2) throw new Error('Enter your full name.');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw new Error('Enter a valid email address.');
+  if ((phone.match(/\d/g) || []).length < 10) throw new Error('Enter a phone number we can reach you on.');
+  if (!SERVICES[service]) throw new Error('Choose a service from the list.');
+  if (!BARBERS.includes(barber)) barber = 'No preference';
+  return { name, email, phone, service, barber, price: SERVICES[service] };
+}
+function localBook(payload) {
+  const guest = guestFields(payload);
+  const date = String(payload.date || '').trim();
+  const time = String(payload.time || '').trim();
+  assertBookable(date, time);
+  const rows = localRows();
+  if (taken(rows, date, time) >= CAPACITY) throw new Error('That hour is full (8 of 8 spots taken). Choose another hour.');
+  const booking = {
+    id: newId(rows),
+    createdAt: nowStamp(),
+    name: guest.name,
+    email: guest.email,
+    phone: guest.phone,
+    service: guest.service,
+    price: guest.price,
+    barber: guest.barber,
+    date,
+    time,
+    end: endTime(time),
+    status: 'confirmed'
+  };
+  rows.unshift(booking);
+  saveLocal(rows);
+  return { ok: true, booking };
+}
+function localCancel(id) {
+  const rows = localRows();
+  const booking = localFind(id, rows);
+  booking.status = 'cancelled';
+  saveLocal(rows);
+  return { ok: true, booking };
+}
+function localReschedule(payload) {
+  const rows = localRows();
+  const booking = localFind(payload.bookingId || payload.id, rows);
+  if (booking.status === 'cancelled') throw new Error('This booking is cancelled. Book a new hour instead.');
+  const date = String(payload.date || '').trim();
+  const time = String(payload.time || '').trim();
+  assertBookable(date, time);
+  if (taken(rows, date, time, booking.id) >= CAPACITY) throw new Error('That hour is full (8 of 8 spots taken). Choose another hour.');
+  booking.date = date;
+  booking.time = time;
+  booking.end = endTime(time);
+  saveLocal(rows);
+  return { ok: true, booking };
+}
+function localApi(payload) {
+  const action = String(payload.action || '').toLowerCase();
+  if (action === 'availability') return localAvailability(payload.date);
+  if (action === 'book') return localBook(payload);
+  if (action === 'track') return { ok: true, booking: localFind(payload.bookingId || payload.id, localRows()) };
+  if (action === 'cancel') return localCancel(payload.bookingId || payload.id);
+  if (action === 'reschedule') return localReschedule(payload);
+  if (action === 'ping') return { ok: true, sheet: 'BARBER-ONE', local: true };
+  throw new Error('Unknown action.');
+}
+async function api(payload) {
+  if (!usingSheet()) return localApi(payload);
+  const params = new URLSearchParams();
+  Object.keys(payload).forEach((key) => {
+    if (payload[key] != null) params.set(key, String(payload[key]));
+  });
+  let response;
+  try {
+    response = await fetch(APPS_SCRIPT_URL + '?' + params.toString(), { method: 'GET' });
+  } catch (err) {
+    throw new Error('Could not reach the booking book. Check your connection and try again.');
+  }
+  let data;
+  try { data = await response.json(); }
+  catch (err) { throw new Error('The booking book returned an unexpected response.'); }
+  if (!data || data.ok === false) throw new Error((data && data.error) || 'Booking failed.');
+  return data;
+}
+
+function cacheBooking(booking) {
+  bookingCache[booking.id] = booking;
+  return booking;
+}
+function gcalUrl(booking) {
+  const start = booking.date.replace(/-/g, '') + 'T' + booking.time.replace(':', '') + '00';
+  const end = booking.date.replace(/-/g, '') + 'T' + (booking.end || endTime(booking.time)).replace(':', '') + '00';
+  const details = [
+    'Booking ID: ' + booking.id,
+    booking.service + ' with ' + booking.barber,
+    booking.time + '–' + (booking.end || endTime(booking.time)) + ' (1 hour)',
+    'Iron & Oak Barber Co.',
+    SHOP_LOCATION
+  ].join('\n');
+  return 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+    + '&text=' + encodeURIComponent('Iron & Oak: ' + booking.service)
+    + '&dates=' + start + '/' + end
+    + '&ctz=Africa/Johannesburg'
+    + '&details=' + encodeURIComponent(details)
+    + '&location=' + encodeURIComponent(SHOP_LOCATION);
+}
+function icsEscape(value) {
+  return String(value).replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/,/g, '\\,').replace(/;/g, '\\;');
+}
+function utcStamp(date) {
+  const pad = (n) => String(n).padStart(2, '0');
+  return date.getUTCFullYear() + pad(date.getUTCMonth() + 1) + pad(date.getUTCDate())
+    + 'T' + pad(date.getUTCHours()) + pad(date.getUTCMinutes()) + pad(date.getUTCSeconds()) + 'Z';
+}
+function buildIcs(booking) {
+  const start = booking.date.replace(/-/g, '') + 'T' + booking.time.replace(':', '') + '00';
+  const end = booking.date.replace(/-/g, '') + 'T' + (booking.end || endTime(booking.time)).replace(':', '') + '00';
+  const description = [
+    'Booking ID: ' + booking.id,
+    booking.service + ' with ' + booking.barber,
+    '1 hour chair at Iron & Oak Barber Co.'
+  ].join('\n');
+  return [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Iron and Oak Barber Co.//Booking//EN',
+    'CALSCALE:GREGORIAN',
+    'METHOD:PUBLISH',
+    'BEGIN:VTIMEZONE',
+    'TZID:Africa/Johannesburg',
+    'BEGIN:STANDARD',
+    'DTSTART:19700101T000000',
+    'TZOFFSETFROM:+0200',
+    'TZOFFSETTO:+0200',
+    'TZNAME:SAST',
+    'END:STANDARD',
+    'END:VTIMEZONE',
+    'BEGIN:VEVENT',
+    'UID:' + booking.id + '@ironoakbarber.co.za',
+    'DTSTAMP:' + utcStamp(new Date()),
+    'DTSTART;TZID=Africa/Johannesburg:' + start,
+    'DTEND;TZID=Africa/Johannesburg:' + end,
+    'SUMMARY:' + icsEscape('Iron & Oak: ' + booking.service),
+    'DESCRIPTION:' + icsEscape(description),
+    'LOCATION:' + icsEscape(SHOP_LOCATION),
+    'STATUS:' + (booking.status === 'cancelled' ? 'CANCELLED' : 'CONFIRMED'),
+    'BEGIN:VALARM',
+    'TRIGGER:-PT1H',
+    'ACTION:DISPLAY',
+    'DESCRIPTION:Iron & Oak appointment',
+    'END:VALARM',
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].join('\r\n');
+}
+function downloadIcs(booking) {
+  if (!booking) return;
+  const blob = new Blob([buildIcs(booking)], { type: 'text/calendar;charset=utf-8' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'iron-oak-' + booking.id + '.ics';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(link.href), 1500);
+}
+function trackingLink(id) {
+  return location.origin + location.pathname + location.search + '#track-' + id;
+}
+function line(label, value) {
+  return '<div class="flex justify-between gap-4 text-sm py-1"><span class="text-ink/60">' + label + '</span><span class="font-600 receipt-value">' + esc(value) + '</span></div>';
+}
+function actionButtons(booking) {
+  const cancelled = booking.status === 'cancelled';
+  const calendar = cancelled ? '' : '<a class="btn-pop bg-ink text-cream px-3 py-1.5 rounded-full" target="_blank" rel="noopener" href="' + esc(gcalUrl(booking)) + '">Google Calendar</a>'
+    + '<button type="button" class="btn-pop border border-ink px-3 py-1.5 rounded-full" data-ics="' + esc(booking.id) + '">Apple / Outlook</button>'
+    + '<button type="button" class="btn-pop border border-ink px-3 py-1.5 rounded-full" data-move="' + esc(booking.id) + '">Change hour</button>'
+    + '<button type="button" class="btn-pop px-3 py-1.5 rounded-full" style="border:1px solid #5C2A2A;color:#5C2A2A" data-cancel="' + esc(booking.id) + '">Cancel</button>';
+  return '<div class="mt-3 flex flex-wrap gap-2 text-sm no-print">'
+    + '<button type="button" class="btn-pop border border-ink px-3 py-1.5 rounded-full" data-receipt="' + esc(booking.id) + '">Receipt</button>'
+    + '<button type="button" class="btn-pop border border-ink px-3 py-1.5 rounded-full" data-copy="' + esc(booking.id) + '">Copy ID</button>'
+    + calendar
+    + '</div>'
+    + (cancelled ? '' : '<div class="hidden mt-3" data-move-panel="' + esc(booking.id) + '"><label class="text-xs text-ink/60">Move to another day and hour</label><input type="date" class="move-date mt-1 w-full border border-oak/20 rounded-sm px-2 py-1.5 text-sm" value="' + esc(booking.date) + '"><div class="move-slots grid grid-cols-3 gap-2 mt-2"></div><p class="move-msg text-xs mt-2 text-ink/60"></p></div>');
+}
+function cardHtml(booking) {
+  const cancelled = booking.status === 'cancelled';
+  const badge = cancelled
+    ? '<span class="text-xs px-2 py-1 rounded-full" style="background:rgba(92,42,42,.1);color:#5C2A2A">Cancelled</span>'
+    : '<span class="text-xs px-2 py-1 rounded-full" style="background:rgba(169,121,58,.15);color:#8A6230">Confirmed</span>';
+  return '<div class="booking-card border border-oak/15 rounded-sm p-4 mt-3" data-card="' + esc(booking.id) + '">'
+    + '<div class="flex items-start justify-between gap-3"><div>'
+    + '<p class="font-600">' + esc(booking.service) + '</p>'
+    + '<p class="text-sm text-ink/70 mt-0.5">' + esc(prettyDate(booking.date)) + '</p>'
+    + '<p class="text-sm text-ink/70">' + esc(booking.time) + '–' + esc(booking.end || endTime(booking.time)) + ' · ' + esc(booking.barber) + '</p>'
+    + '<p class="text-sm mt-1">ID <strong>' + esc(booking.id) + '</strong></p>'
+    + '</div>' + badge + '</div>'
+    + actionButtons(booking)
+    + '</div>';
+}
+function renderReceipt(booking, scroll) {
+  cacheBooking(booking);
+  const el = document.getElementById('receipt');
+  const cancelled = booking.status === 'cancelled';
+  el.dataset.id = booking.id;
+  el.classList.remove('hidden');
+  el.innerHTML = '<div class="receipt-paper rounded-sm p-6 sm:p-8">'
+    + '<div class="text-center"><p class="font-display font-700 text-2xl">Iron &amp; Oak</p>'
+    + '<p class="text-sm text-ink/60">Barber Co. · Maboneng</p>'
+    + '<p class="text-xs text-ink/60 mt-1">24 Market Street · 011 622 0198</p></div>'
+    + '<hr class="receipt-rule">'
+    + '<p class="text-center text-xs tracking-widest font-600">BOOKING RECEIPT</p>'
+    + '<p class="text-center font-display font-700 text-3xl mt-2">' + esc(booking.id) + '</p>'
+    + '<p class="text-center text-sm mt-1" style="color:' + (cancelled ? '#5C2A2A' : '#8A6230') + '">' + (cancelled ? 'CANCELLED' : 'CONFIRMED') + '</p>'
+    + '<hr class="receipt-rule">'
+    + line('Guest', booking.name)
+    + line('Email', booking.email)
+    + line('Phone', booking.phone)
+    + line('Service', booking.service)
+    + line('Price', 'R' + booking.price)
+    + line('Barber', booking.barber)
+    + line('Day', prettyDate(booking.date))
+    + line('Hour', booking.time + '–' + (booking.end || endTime(booking.time)))
+    + line('Duration', '1 hour')
+    + line('Booked', booking.createdAt || '')
+    + '<hr class="receipt-rule">'
+    + '<p class="text-sm text-ink/70">Keep this booking ID. Use it to track or cancel the visit. The chair is held for one hour, and this hour can take up to 8 guests.</p>'
+    + '<div class="mt-5 flex flex-wrap gap-2 no-print">'
+    + (cancelled ? '' : '<a class="btn-pop bg-ink text-cream px-5 py-2.5 rounded-full text-sm font-600" target="_blank" rel="noopener" href="' + esc(gcalUrl(booking)) + '">Add to Google Calendar</a>'
+      + '<button type="button" class="btn-pop border border-ink px-5 py-2.5 rounded-full text-sm font-600" data-ics="' + esc(booking.id) + '">Apple / Outlook (.ics)</button>'
+      + '<button type="button" class="btn-pop px-5 py-2.5 rounded-full text-sm font-600" style="border:1px solid #5C2A2A;color:#5C2A2A" data-cancel="' + esc(booking.id) + '">Cancel booking</button>')
+    + '<button type="button" class="btn-pop border border-ink px-5 py-2.5 rounded-full text-sm font-600" data-copy="' + esc(booking.id) + '">Copy ID</button>'
+    + '<button type="button" class="btn-pop border border-ink px-5 py-2.5 rounded-full text-sm font-600" data-copylink="' + esc(booking.id) + '">Copy tracking link</button>'
+    + '<button type="button" class="btn-pop border border-ink px-5 py-2.5 rounded-full text-sm font-600" data-print="' + esc(booking.id) + '">Print</button>'
+    + '</div></div>';
+  if (scroll) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function showTracked(booking) {
+  cacheBooking(booking);
+  const el = document.getElementById('trackResult');
+  el.dataset.id = booking.id;
+  el.innerHTML = cardHtml(booking);
+}
+
+function renderSlots(data, prefer) {
+  const hint = document.getElementById('slotHint');
+  const grid = document.getElementById('slotGrid');
+  if (data.closed) {
+    selectedTime = '';
+    grid.innerHTML = '';
+    hint.textContent = data.reason || 'The shop is closed.';
+    return;
+  }
+  const stillOpen = (data.slots || []).some((slot) => slot.time === prefer && slot.left > 0 && !slot.past);
+  selectedTime = stillOpen ? prefer : '';
+  hint.textContent = 'Each booking is one hour. Up to 8 spots in the same hour.';
+  grid.innerHTML = (data.slots || []).map((slot) => {
+    const disabled = slot.left <= 0 || slot.past;
+    const label = slot.past ? 'Passed' : spotLabel(slot.left);
+    return '<button type="button" class="slot-btn" data-time="' + slot.time + '" data-end="' + slot.end + '" aria-pressed="' + (selectedTime === slot.time ? 'true' : 'false') + '"' + (disabled ? ' disabled' : '') + '><span class="slot-time">' + slot.time + '</span><span class="meta">' + label + '</span></button>';
+  }).join('');
+}
+async function loadSlots(date, keepSelection) {
+  const hint = document.getElementById('slotHint');
+  const grid = document.getElementById('slotGrid');
+  const prefer = keepSelection ? selectedTime : '';
+  if (!keepSelection) selectedTime = '';
+  if (!date) {
+    grid.innerHTML = '';
+    hint.textContent = 'Choose a day to see open hours.';
+    return;
+  }
+  const token = ++slotsRequest;
+  hint.textContent = 'Checking the book…';
+  try {
+    const data = await api({ action: 'availability', date });
+    if (token !== slotsRequest) return;
+    renderSlots(data, prefer);
+  } catch (err) {
+    if (token !== slotsRequest) return;
+    grid.innerHTML = '';
+    hint.textContent = err.message;
+  }
+}
+function showFormError(message) {
+  const el = document.getElementById('formError');
+  el.textContent = message;
+  el.classList.remove('hidden');
+}
+function paintBooking(booking) {
+  cacheBooking(booking);
+  const track = document.getElementById('trackResult');
+  if (track.dataset.id === booking.id) showTracked(booking);
+  const receipt = document.getElementById('receipt');
+  if (receipt.dataset.id === booking.id && !receipt.classList.contains('hidden')) renderReceipt(booking, false);
+  const modal = document.getElementById('bookingsModal');
+  if (!modal.classList.contains('hidden')) renderBookingsList();
+  const dateValue = document.getElementById('bDate').value;
+  if (dateValue) loadSlots(dateValue, true);
+}
+async function onCancel(id) {
+  if (!confirm('Cancel booking ' + id + '? This frees the spot.')) return;
+  try {
+    const data = await api({ action: 'cancel', bookingId: id });
+    paintBooking(data.booking);
+  } catch (err) {
+    alert(err.message);
+  }
+}
+async function onReschedule(id, date, time) {
+  const messages = document.querySelectorAll('[data-move-panel="' + id + '"] .move-msg');
+  try {
+    const data = await api({ action: 'reschedule', bookingId: id, date, time });
+    paintBooking(data.booking);
+  } catch (err) {
+    if (messages.length) messages.forEach((el) => { el.textContent = err.message; });
+    else alert(err.message);
+  }
+}
+async function fillMoveSlots(panel, date) {
+  const box = panel.querySelector('.move-slots');
+  const msg = panel.querySelector('.move-msg');
+  box.innerHTML = '';
+  msg.textContent = 'Checking hours…';
+  try {
+    const data = await api({ action: 'availability', date });
+    if (data.closed) {
+      msg.textContent = data.reason || 'Closed.';
+      return;
+    }
+    msg.textContent = 'Pick a new hour. Full hours stay closed.';
+    box.innerHTML = (data.slots || []).map((slot) => {
+      const disabled = slot.left <= 0 || slot.past;
+      const label = slot.past ? 'Passed' : (slot.left <= 0 ? 'Full' : slot.left + ' left');
+      return '<button type="button" class="mini-slot" data-time="' + slot.time + '"' + (disabled ? ' disabled' : '') + '>' + slot.time + '<small>' + label + '</small></button>';
+    }).join('');
+  } catch (err) {
+    msg.textContent = err.message;
+  }
+}
+async function copyText(text, button) {
+  const previous = button.textContent;
+  try {
+    await navigator.clipboard.writeText(text);
+    button.textContent = 'Copied';
+  } catch (err) {
+    prompt('Copy this', text);
+    return;
+  }
+  setTimeout(() => { button.textContent = previous; }, 1400);
+}
+
+document.getElementById('slotGrid').addEventListener('click', (event) => {
+  const button = event.target.closest('.slot-btn');
+  if (!button || button.disabled) return;
+  selectedTime = button.dataset.time;
+  document.querySelectorAll('#slotGrid .slot-btn').forEach((slot) => {
+    slot.setAttribute('aria-pressed', slot === button ? 'true' : 'false');
+  });
+});
+
+document.getElementById('bDate').addEventListener('change', () => {
+  loadSlots(document.getElementById('bDate').value, false);
+});
+
+document.getElementById('bookingForm').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  if (saving) return;
+  document.getElementById('formError').classList.add('hidden');
+  const payload = {
+    action: 'book',
+    name: document.getElementById('bName').value,
+    email: document.getElementById('bEmail').value,
+    phone: document.getElementById('bPhone').value,
+    service: document.getElementById('bService').value,
+    barber: document.getElementById('bBarber').value,
+    date: document.getElementById('bDate').value,
+    time: selectedTime
+  };
+  if (!payload.date) return showFormError('Choose a day.');
+  if (!payload.time) return showFormError('Choose an hour with a free spot.');
+  if (!document.getElementById('bTerms').checked) return showFormError('Please accept the terms and privacy policy to book.');
+  saving = true;
+  const button = document.getElementById('bookBtn');
+  const label = button.textContent;
+  button.textContent = 'Saving booking…';
+  button.disabled = true;
+  try {
+    const data = await api(payload);
+    remember(data.booking.id);
+    document.getElementById('bookingForm').reset();
+    selectedTime = '';
+    document.getElementById('slotGrid').innerHTML = '';
+    document.getElementById('slotHint').textContent = 'Choose a day to see open hours.';
+    renderReceipt(data.booking, true);
+  } catch (err) {
+    showFormError(err.message);
+    if (payload.date) loadSlots(payload.date, true);
+  } finally {
+    saving = false;
+    button.disabled = false;
+    button.textContent = label;
+  }
+});
+
+async function lookup(id) {
+  const el = document.getElementById('trackResult');
+  el.innerHTML = '<p class="text-sm text-ink/60 mt-3">Looking up that ID…</p>';
+  try {
+    const data = await api({ action: 'track', bookingId: id });
+    remember(data.booking.id);
+    showTracked(data.booking);
+  } catch (err) {
+    el.dataset.id = '';
+    el.innerHTML = '<p class="text-sm mt-3" style="color:#5C2A2A">' + esc(err.message) + '</p>';
+  }
+}
+document.getElementById('trackForm').addEventListener('submit', (event) => {
+  event.preventDefault();
+  lookup(document.getElementById('trackId').value);
+});
+
+function openBookingsModal() {
+  renderBookingsList();
+  const modal = document.getElementById('bookingsModal');
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
+function closeBookingsModal() {
+  const modal = document.getElementById('bookingsModal');
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+  if (location.hash === '#mine') history.replaceState(null, '', location.pathname + location.search);
+}
+async function renderBookingsList() {
+  const wrap = document.getElementById('bookingsList');
+  const ids = remembered();
+  if (!ids.length) {
+    wrap.innerHTML = '<p class="text-sm text-ink/60">No booking IDs on this device yet. Book a chair, or look an ID up under Track or cancel.</p>';
+    return;
+  }
+  wrap.innerHTML = '<p class="text-sm text-ink/60">Checking the book…</p>';
+  const cards = await Promise.all(ids.map(async (id) => {
+    try {
+      const data = await api({ action: 'track', bookingId: id });
+      cacheBooking(data.booking);
+      return cardHtml(data.booking);
+    } catch (err) {
+      return '<div class="border border-oak/15 rounded-sm p-4 mt-3"><p class="font-600">' + esc(id) + '</p><p class="text-sm text-ink/60 mt-1">' + esc(err.message) + '</p><button type="button" class="btn-pop border border-ink px-3 py-1.5 rounded-full text-sm mt-3" data-forget="' + esc(id) + '">Remove from this device</button></div>';
+    }
+  }));
+  wrap.innerHTML = cards.join('');
+}
+
+document.body.addEventListener('click', async (event) => {
+  const mini = event.target.closest('.mini-slot');
+  if (mini && !mini.disabled) {
+    const panel = mini.closest('[data-move-panel]');
+    await onReschedule(panel.dataset.movePanel, panel.querySelector('.move-date').value, mini.dataset.time);
+    return;
+  }
+  const move = event.target.closest('[data-move]');
+  if (move) {
+    const card = move.closest('.booking-card');
+    const panel = card ? card.querySelector('[data-move-panel]') : null;
+    if (!panel) return;
+    panel.classList.toggle('hidden');
+    if (!panel.classList.contains('hidden')) {
+      const input = panel.querySelector('.move-date');
+      const today = todayJohannesburg();
+      input.min = today;
+      input.max = addDays(today, 90);
+      fillMoveSlots(panel, input.value || today);
+    }
+    return;
+  }
+  const cancel = event.target.closest('[data-cancel]');
+  if (cancel) { onCancel(cancel.dataset.cancel); return; }
+  const copy = event.target.closest('[data-copy]');
+  if (copy) { copyText(copy.dataset.copy, copy); return; }
+  const copyLink = event.target.closest('[data-copylink]');
+  if (copyLink) { copyText(trackingLink(copyLink.dataset.copylink), copyLink); return; }
+  const ics = event.target.closest('[data-ics]');
+  if (ics) { downloadIcs(bookingCache[ics.dataset.ics]); return; }
+  const printButton = event.target.closest('[data-print]');
+  if (printButton) {
+    const booking = bookingCache[printButton.dataset.print];
+    if (booking) {
+      renderReceipt(booking, false);
+      setTimeout(() => window.print(), 80);
+    }
+    return;
+  }
+  const receiptButton = event.target.closest('[data-receipt]');
+  if (receiptButton) {
+    const booking = bookingCache[receiptButton.dataset.receipt];
+    if (booking) renderReceipt(booking, true);
+    return;
+  }
+  const forget = event.target.closest('[data-forget]');
+  if (forget) { forgetId(forget.dataset.forget); renderBookingsList(); }
+});
+document.body.addEventListener('change', (event) => {
+  if (!event.target.classList.contains('move-date')) return;
+  fillMoveSlots(event.target.closest('[data-move-panel]'), event.target.value);
+});
+
+(function init() {
+  const dateInput = document.getElementById('bDate');
+  const today = todayJohannesburg();
+  dateInput.min = today;
+  dateInput.max = addDays(today, 90);
+  const note = document.getElementById('storeNote');
+  note.textContent = usingSheet()
+    ? 'Your receipt is stored in our booking book. The ID works on any device.'
+    : 'Your receipt and booking ID are saved on this device. Use them to track or cancel.';
+  const hash = location.hash.match(/^#track-(IO-[A-Za-z0-9]{6})$/i);
+  if (hash) {
+    document.getElementById('trackId').value = hash[1].toUpperCase();
+    document.getElementById('booking').scrollIntoView();
+    lookup(hash[1]);
+  }
+})();
+document.querySelectorAll('.js-my-bookings').forEach((el) => {
+  el.addEventListener('click', (event) => {
+    if (!document.getElementById('bookingsModal')) return;
+    event.preventDefault();
+    if (location.hash !== '#mine') history.pushState(null, '', '#mine');
+    openBookingsModal();
+  });
+});
+window.addEventListener('hashchange', () => {
+  const modal = document.getElementById('bookingsModal');
+  if (!modal) return;
+  if (location.hash === '#mine') openBookingsModal();
+  else if (!modal.classList.contains('hidden')) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+});
+const bookingsModalEl = document.getElementById('bookingsModal');
+if (bookingsModalEl) {
+  bookingsModalEl.addEventListener('click', (event) => {
+    if (event.target.id === 'bookingsModal') closeBookingsModal();
+  });
+}
+document.addEventListener('keydown', (event) => {
+  if (event.key !== 'Escape') return;
+  const modal = document.getElementById('bookingsModal');
+  if (modal && !modal.classList.contains('hidden')) closeBookingsModal();
+});
+if (location.hash === '#mine') openBookingsModal();
+
+</script>
+
+</body>
+</html>
