@@ -85,7 +85,7 @@
       if (book) {
         book.addEventListener('click', () => {
           closePopup();
-          location.href = 'booking.html';
+          location.href = '/booking';
         });
       }
       popup.addEventListener('click', (event) => {
